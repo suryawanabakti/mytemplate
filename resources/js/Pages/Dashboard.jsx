@@ -1,10 +1,8 @@
-import { Button } from "primereact/button";
-import { Chart } from "primereact/chart";
-import { Menu } from "primereact/menu";
-import React, { useContext, useEffect, useRef, useState } from "react";
+import DashboardInfoCard from "@/Components/DashboardInfoCard.jsx";
 import { LayoutContext } from "@/Layouts/layout/context/layoutcontext";
 import Layout from "@/Layouts/layout/layout.jsx";
-import DashboardInfoCard from "@/Components/DashboardInfoCard.jsx";
+import { Chart } from "primereact/chart";
+import { useContext, useEffect, useRef, useState } from "react";
 
 const lineData = {
     labels: ["January", "February", "March", "April", "May", "June", "July"],

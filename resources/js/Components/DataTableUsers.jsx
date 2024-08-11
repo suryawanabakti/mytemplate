@@ -1,26 +1,23 @@
 import Layout from "@/Layouts/layout/layout.jsx";
-import axios from "axios";
 import { Column } from "primereact/column";
 import { DataTable } from "primereact/datatable";
 import { useEffect, useRef, useState } from "react";
 import { getUsers } from "@/Services/UserService";
 
-const Index = () => {
+const DataTableUsers = () => {
     const dt = useRef(null);
-    const [users, setUsers] = useState(null);
-    const [selectedUsers, setSelectedUsers] = useState(null);
+    const [products, setProducts] = useState(null);
+    const [selectedProducts, setSelectedProducts] = useState(null);
     const [globalFilter, setGlobalFilter] = useState(null);
     const [loading, setLoading] = useState(false);
+    const fetchData = async () => {
+        setLoading(true);
+        const res = await getUsers();
+        setProducts(res.data);
+        setLoading(false);
+    };
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                setLoading(true);
-                const res = await getUsers();
-                setUsers(res.data);
-            } catch (error) {}
-            setLoading(false);
-        };
         fetchData();
     }, []);
     return (
@@ -31,9 +28,11 @@ const Index = () => {
                         <DataTable
                             loading={loading}
                             ref={dt}
-                            value={users}
-                            selection={selectedUsers}
-                            onSelectionChange={(e) => setSelectedUsers(e.value)}
+                            value={products}
+                            selection={selectedProducts}
+                            onSelectionChange={(e) =>
+                                setSelectedProducts(e.value)
+                            }
                             dataKey="id"
                             paginator
                             rows={10}
@@ -61,4 +60,4 @@ const Index = () => {
     );
 };
 
-export default Index;
+export default DataTableUsers;
