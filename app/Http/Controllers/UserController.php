@@ -15,6 +15,6 @@ class UserController extends Controller
 
     public function getUsers()
     {
-        return User::all();
+        return User::orderBy('id', 'DESC')->get();
     }
 }

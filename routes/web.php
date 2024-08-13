@@ -28,11 +28,10 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
-})
-    ->name('dashboard');
-//    ->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
     Route::get('/users/get-users', [UserController::class, 'getUsers'])->name('users.get-users');
 
