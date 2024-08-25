@@ -98,6 +98,7 @@ export default function Login({ status, canResetPassword }) {
                                     onChange={(e) =>
                                         setData("password", e.target.value)
                                     }
+                                    autoComplete="true"
                                 />
                                 <InputError
                                     message={errors.password}

@@ -51,6 +51,7 @@ const Index = () => {
             </div>
         );
     };
+
     return (
         <Layout>
             <div className="grid">

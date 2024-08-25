@@ -9,6 +9,7 @@ import React, {
 } from "react";
 import { LayoutContext } from "./context/layoutcontext";
 import { Link } from "@inertiajs/react";
+import { useState } from "react";
 
 const AppTopbar = forwardRef((props, ref) => {
     const { layoutConfig, layoutState, onMenuToggle, showProfileSidebar } =
@@ -16,7 +17,7 @@ const AppTopbar = forwardRef((props, ref) => {
     const menubuttonRef = useRef(null);
     const topbarmenuRef = useRef(null);
     const topbarmenubuttonRef = useRef(null);
-
+    const [showSideBar, setShowSideBar] = useState(true);
     useImperativeHandle(ref, () => ({
         menubutton: menubuttonRef.current,
         topbarmenu: topbarmenuRef.current,
